@@ -1,5 +1,6 @@
 package com.jmicros;
 
+import com.jmicros.rest.PokeApiClient;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -14,19 +15,21 @@ public class Main {
     }
 
     private void run() {
-        showArt();
+        new PokeApiClient(config).run();
     }
 
-    private void showArt() {
+    private static void showArt() {
         logger.info("   ___ ___  ___ _                        ");
         logger.info("  |_  ||  \\/  |(_)                       ");
         logger.info("    | || .  . | _   ___  _ __  ___   ___ ");
         logger.info("    | || |\\/| || | / __|| '__|/ _ \\ / __|");
         logger.info("/\\__/ /| |  | || || (__ | |  | (_) |\\__ \\");
         logger.info("\\____/ \\_|  |_/|_| \\___||_|   \\___/ |___/");
+        logger.info("                                             ");
     }
 
     public static void main(String[] args){
+        showArt();
         Config config = new Config();
         Main main = new Main(config);
         main.run();
