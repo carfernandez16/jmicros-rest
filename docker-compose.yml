@@ -1,0 +1,9 @@
+version: "3.3"
+
+services:
+  jmicros:
+    hostname: jmicros
+    container_name: jmicros
+    image: jmicros
+    ports:
+      - 1116:8080
