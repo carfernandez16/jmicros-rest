@@ -28,7 +28,7 @@ public class Main {
         logger.info("                                             ");
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws RuntimeException{
         showArt();
         Config config = new Config();
         Main main = new Main(config);
