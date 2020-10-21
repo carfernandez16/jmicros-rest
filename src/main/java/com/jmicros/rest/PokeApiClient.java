@@ -20,12 +20,6 @@ public class PokeApiClient {
     private static final Logger logger = LogManager.getLogger(PokeApiClient.class);
     private static final String URI = "https://pokeapi.co/api/v2/pokemon";
 
-    private Config config;
-
-    public PokeApiClient(Config config){
-        this.config = config;
-    }
-
     public void run() {
         /*
          * Business case:
@@ -107,9 +101,11 @@ public class PokeApiClient {
                     String message = EntityUtils.toString(entity);
                     JSONObject jsonObject = new JSONObject(message);
                     JSONArray jsonArray = jsonObject.getJSONArray("results");
-                    for (int i = 0; i < jsonArray.length(); i++) {
-                        JSONObject pokemon = jsonArray.getJSONObject(i);
-                        logger.info("pokemon: " + pokemon.getString("name"));
+
+                    JSONObject pokemon = jsonArray.getJSONObject(0);
+                    String name = pokemon.getString("name");
+                    if(!"spearow".equals(name)){
+                        throw new RuntimeException("custom offset failed, pokemon=" + name);
                     }
                 }
             }

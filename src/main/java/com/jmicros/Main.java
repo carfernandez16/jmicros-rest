@@ -15,7 +15,7 @@ public class Main {
     }
 
     private void run() {
-        new PokeApiClient(config).run();
+        new PokeApiClient().run();
     }
 
     private static void showArt() {
